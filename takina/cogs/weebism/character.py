@@ -21,7 +21,9 @@ class CharacterSearch(commands.Cog):
 
             data = await request(url1)
             if data and data.get("data"):
-                return data["data"]
+                return data["data"][0]
+            else:
+                return data = None
 
         except Exception as e:
             raise e
