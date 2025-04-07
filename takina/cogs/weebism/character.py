@@ -12,12 +12,16 @@ class CharacterSearch(commands.Cog):
 
     async def fetch_character(self, character_name: str):
         url1 = f"https://api.jikan.moe/v4/characters?q={character_name}&limit=1"
-        # url2 = f"https://api.jikan.moe/v4/characters/{character_name}"
+        url2 = f"https://api.jikan.moe/v4/characters/{character_name}"
 
         try:
-            data = await request(url1)
+            data = await request(url2)
             if data and data.get("data"):
                 return data["data"]
+
+            data = await request(url1)
+            if data and data.get("data"):
+                return data["data"][0]
 
         except Exception as e:
             raise e
