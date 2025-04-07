@@ -13,10 +13,6 @@ class CharacterSearch(commands.Cog):
     async def fetch_character(self, character_name: str):
         url1 = f"https://api.jikan.moe/v4/characters?q={character_name}&limit=1"
         url2 = f"https://api.jikan.moe/v4/characters/{character_name}"
-        def get_data():
-            return []
-            
-        data = get_data()
 
         try:
             data = await request(url2)
